@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class UserSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Jalankan Seeder untuk membuat Admin dan Staff.
      */
     public function run(): void
     {
@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Admin FatihBeef',
             'username' => 'admin',
-            'password' => Hash::make('password123'), // Ubah jika perlu
+            'password' => Hash::make('password123'), // Ganti jika perlu
+            'role' => 'admin', // Perbaiki role menjadi "admin"
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -26,7 +27,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Staff FatihBeef',
             'username' => 'staff',
-            'password' => Hash::make('password123'), // Ubah jika perlu
+            'password' => Hash::make('password123'), // Ganti jika perlu
+            'role' => 'staff', // Pastikan role "staff"
             'created_at' => now(),
             'updated_at' => now(),
         ]);

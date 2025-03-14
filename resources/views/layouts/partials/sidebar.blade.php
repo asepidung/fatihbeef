@@ -30,12 +30,14 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
+                @if(Auth::user()->isAdmin())
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('manage.users') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Manajemen Pengguna</p>
                     </a>
                 </li>
+                @endif
             </ul>
         </nav>
     </div>

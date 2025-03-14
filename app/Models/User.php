@@ -16,9 +16,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'username',  // Ganti dari email ke username
+        'username',
+        'name',
         'password',
-        'role',  // Tambah role (admin atau staff)
+        'role',
     ];
 
     /**
@@ -40,5 +41,15 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',  // Laravel akan otomatis mengenkripsi password
         ];
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isStaff()
+    {
+        return $this->role === 'staff';
     }
 }
