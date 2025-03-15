@@ -38,6 +38,12 @@
                     </a>
                 </li>
                 @endif
+                <li class="nav-item">
+                    <a href="{{ url('/pelanggan') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>pelanggan</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

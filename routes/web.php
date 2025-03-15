@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PelangganController;
 
 // Jika user belum login, langsung arahkan ke halaman login
 Route::get('/', function () {
@@ -47,6 +48,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/manage-users/{id}', [UserController::class, 'update'])->name('manage.users.update');
     Route::delete('/manage-users/{id}', [UserController::class, 'destroy'])->name('manage.users.destroy');
 });
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/pelanggan', [PelangganController::class, 'index'])->name('pelanggan.index');
+    Route::get('/pelanggan/create', [PelangganController::class, 'create'])->name('pelanggan.create');
+    Route::post('/pelanggan', [PelangganController::class, 'store'])->name('pelanggan.store');
+    Route::get('/pelanggan/{id}/edit', [PelangganController::class, 'edit'])->name('pelanggan.edit');
+    Route::put('/pelanggan/{id}', [PelangganController::class, 'update'])->name('pelanggan.update');
+    Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
+});
+
 
 
 
