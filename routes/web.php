@@ -58,8 +58,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/pelanggan/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
 });
 
+use App\Http\Controllers\BarangController;
 
-
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/barang', [BarangController::class, 'index'])->name('barang.index');
+    Route::get('/barang/create', [BarangController::class, 'create'])->name('barang.create');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::get('/barang/{id}/edit', [BarangController::class, 'edit'])->name('barang.edit');
+    Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+    Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+});
 
 // Termasuk rute bawaan dari Laravel Breeze
 require __DIR__ . '/auth.php';

@@ -41,7 +41,13 @@
                 <li class="nav-item">
                     <a href="{{ url('/pelanggan') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>pelanggan</p>
+                        <p>Pelanggan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/barang') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Barang</p>
                     </a>
                 </li>
             </ul>
