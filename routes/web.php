@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 // Jika user belum login, langsung arahkan ke halaman login
 Route::get('/', function () {
@@ -33,6 +34,20 @@ Route::middleware(['auth'])->group(function () {
         })->name('manage.users');
     });
 });
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/manage-users', [UserController::class, 'index'])->name('manage.users');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/manage-users', [UserController::class, 'index'])->name('manage.users');
+    Route::get('/manage-users/create', [UserController::class, 'create'])->name('manage.users.create');
+    Route::post('/manage-users', [UserController::class, 'store'])->name('manage.users.store');
+    Route::get('/manage-users/{id}/edit', [UserController::class, 'edit'])->name('manage.users.edit');
+    Route::put('/manage-users/{id}', [UserController::class, 'update'])->name('manage.users.update');
+    Route::delete('/manage-users/{id}', [UserController::class, 'destroy'])->name('manage.users.destroy');
+});
+
 
 
 // Termasuk rute bawaan dari Laravel Breeze
