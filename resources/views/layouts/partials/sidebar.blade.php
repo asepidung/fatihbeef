@@ -27,26 +27,26 @@
                 @if(Auth::user()->isAdmin())
                 <li class="nav-item">
                     <a href="{{ route('manage.users') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Manajemen Pengguna</p>
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>Pengguna</p>
                     </a>
                 </li>
                 @endif
                 <li class="nav-item">
                     <a href="{{ url('/pelanggan') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-user-tag"></i>
                         <p>Pelanggan</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/supplier') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-user-tie"></i>
                         <p>Pemasok</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url('/barang') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-boxes"></i>
                         <p>Barang</p>
                     </a>
                 </li>

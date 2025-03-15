@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\PesananController;
 
 // Jika user belum login, langsung arahkan ke halaman login
 Route::get('/', function () {
@@ -78,6 +79,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/supplier/{id}', [SupplierController::class, 'update'])->name('supplier.update');
     Route::delete('/supplier/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+    Route::get('/pesanan/create', [PesananController::class, 'create'])->name('pesanan.create');
+    Route::post('/pesanan', [PesananController::class, 'store'])->name('pesanan.store');
+    Route::get('/pesanan/{id}', [PesananController::class, 'show'])->name('pesanan.show');
+});
+
 
 
 // Termasuk rute bawaan dari Laravel Breeze
