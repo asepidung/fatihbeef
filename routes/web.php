@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\SupplierController;
 
 // Jika user belum login, langsung arahkan ke halaman login
 Route::get('/', function () {
@@ -68,6 +69,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/barang/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 });
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/supplier', [SupplierController::class, 'index'])->name('supplier.index');
+    Route::get('/supplier/create', [SupplierController::class, 'create'])->name('supplier.create');
+    Route::post('/supplier', [SupplierController::class, 'store'])->name('supplier.store');
+    Route::get('/supplier/{id}/edit', [SupplierController::class, 'edit'])->name('supplier.edit');
+    Route::put('/supplier/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+    Route::delete('/supplier/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+});
+
 
 // Termasuk rute bawaan dari Laravel Breeze
 require __DIR__ . '/auth.php';
